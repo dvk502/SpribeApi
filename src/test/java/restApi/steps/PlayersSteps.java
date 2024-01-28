@@ -1,6 +1,7 @@
 package restApi.steps;
 
 import groovyjarjarantlr4.v4.parse.GrammarTreeVisitor;
+import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import org.assertj.core.api.Assertions;
 import restApi.EnumGender;
@@ -26,6 +27,7 @@ public class PlayersSteps {
                 .jsonPath().getList("players", PlayersItemDto.class);
     }
 
+    @Step ("Create player")
     public PlayerCreateResponseDto createPlayer(EnumUserType userType, int age, EnumGender gender, String login, String password , EnumUserType role, String screenName) {
         Response response = service.createPlayer(userType, age, gender, login, password,role, screenName);
 
@@ -36,6 +38,7 @@ public class PlayersSteps {
                 .jsonPath().getObject("", PlayerCreateResponseDto.class);
     }
 
+    @Step ("Verify response after create player")
     public  void verifyResponseAfterCreate (PlayerCreateResponseDto actualResponse, int id_player,int age, EnumGender gender, String login, String password ,EnumUserType role, String screenName){
         PlayerCreateResponseDto expectedResponse = new PlayerCreateResponseDto();
         expectedResponse.setId(id_player);
@@ -45,15 +48,17 @@ public class PlayersSteps {
         expectedResponse.setGender(gender.getGender());
         expectedResponse.setAge(age);
         expectedResponse.setRole(role.getName());
-
+        log.info("Verify response after create player");
         Assertions.assertThat(actualResponse).isEqualTo(expectedResponse);
     }
 
+    @Step ("Verify response after create player")
     public  void verifyResponseAfterCreate (PlayerCreateResponseDto actualResponse, int id_player,String login){
         PlayerCreateResponseDto expectedResponse = new PlayerCreateResponseDto();
         expectedResponse.setId(id_player);
         expectedResponse.setLogin(login);
 
+        log.info("Verify response after create player");
         Assertions.assertThat(actualResponse).isEqualTo(expectedResponse);
     }
 

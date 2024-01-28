@@ -1,9 +1,0 @@
-2024-01-28 14:28:24 Create playerPlayerCreateResponseDto(password=null, role=null, gender=null, id=310813354, screenName=null, login=login12100, age=0) [INFO ]   41 PlayersSteps 
-2024-01-28 14:30:55 Create playerio.restassured.internal.RestAssuredResponseImpl@2b5ca574                                                    [INFO ]   33 PlayersSteps 
-2024-01-28 14:31:14 Create playerio.restassured.internal.RestAssuredResponseImpl@43de88f3                                                    [INFO ]   33 PlayersSteps 
-2024-01-28 14:31:38 Create playerio.restassured.internal.RestAssuredResponseImpl@7d44eab                                                     [INFO ]   33 PlayersSteps 
-2024-01-28 14:35:16 Create playerAge: 44 gender: noname login:login82399 password:pass55566 role:ADMIN screen name:screenNamer               [INFO ]   29 PlayersSteps 
-2024-01-28 15:04:31 Create playerAge: 44 gender: noname login:login17756 password:pass55566 role:admin screen name:screenNamer               [INFO ]   31 PlayersSteps 
-2024-01-28 15:05:07 Create playerAge: 44 gender: noname login:login51295 password:pass55566 role:admin screen name:screenNamer               [INFO ]   31 PlayersSteps 
-2024-01-28 16:58:19 Create playerAge: 33 gender: male login:login1247 password:pass5555 role:admin screen name:screenNames                   [INFO ]   31 PlayersSteps 
-2024-01-28 17:05:34 Create playerAge: 33 gender: FEMALE login:login15657 password:pass5555 role:admin screen name:screenNames                [INFO ]   32 PlayersSteps 
