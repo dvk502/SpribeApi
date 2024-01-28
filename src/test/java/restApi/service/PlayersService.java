@@ -1,11 +1,15 @@
 package restApi.service;
 
 import io.restassured.RestAssured;
+import io.restassured.filter.log.RequestLoggingFilter;
+import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import restApi.EnumGender;
 import restApi.EnumUserType;
 import restApi.endpoint.Endpoints;
+
+import java.util.Map;
 
 public class PlayersService {
 
@@ -46,6 +50,42 @@ public class PlayersService {
                 .get(Endpoints.CREATE + userType.getName())
                 .then()
                 .statusCode(200)
+                .extract().response();
+    }
+
+    public Response deletePlayer(int playerId, EnumUserType editor) {
+
+        return getDefaultRequestSpecification()
+                .when()
+                .body(Map.of("playerId", playerId))
+                .contentType("application/json")
+                .delete(Endpoints.DELETE + editor.getName())
+                .then()
+                .statusCode(200)
+                .extract().response();
+    }
+
+    public Response getByPlayerId(int playerId) {
+
+        return getDefaultRequestSpecification()
+                .when()
+                .body(Map.of("playerId", playerId))
+                .contentType("application/json")
+                .post(Endpoints.GET_PLAYER_BY_ID)
+                .then()
+                .statusCode(200)
+                .extract().response();
+    }
+
+    public Response verifyEmptyPlayerId(int playerId) {
+
+        return getDefaultRequestSpecification()
+                .when()
+                .body(Map.of("playerId", playerId))
+                .contentType("application/json")
+                .post(Endpoints.GET_PLAYER_BY_ID)
+                .then()
+                .statusCode(404)
                 .extract().response();
     }
 

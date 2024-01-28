@@ -1,10 +1,7 @@
 package restApi.tests;
 
 import lombok.val;
-import org.testng.Assert;
 import org.testng.annotations.Test;
-import restApi.EnumGender;
-import restApi.EnumUserType;
 import restApi.steps.PlayersSteps;
 
 import static restApi.EnumGender.FEMALE;
@@ -38,4 +35,14 @@ public class Tests {
         STEPS.verifyResponseAfterCreate(newPlayer, newPlayer.getId(), randomLogin);
     }
 
+    @Test()
+    public void deletePlayer() {
+        String randomLogin = "login" + (int) (Math.random() * 100000);
+//
+        val newPlayer = STEPS.createPlayer(SUPERVISOR, 33, FEMALE, randomLogin, "pass5555", ADMIN, "screenNames");
+        int id_player_new = newPlayer.getId();
+        STEPS.deletePlayer(id_player_new, ADMIN);
+
+        STEPS.verifyEmptyPlayerId(id_player_new);
+    }
 }
